@@ -2,7 +2,7 @@ import {
   Injectable,
   NotFoundException,
   BadRequestException,
-  ConflictException,
+  ConflictException, Logger,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -24,6 +24,9 @@ interface ReviewScores {
 
 @Injectable()
 export class ReviewsService {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
+  private readonly logger = new Logger(ReviewsService.name);
+
   constructor(
     @InjectRepository(Review)
     private reviewsRepository: Repository<Review>,
@@ -94,13 +97,18 @@ export class ReviewsService {
       whereConditions.status = filters.status;
     }
 
-    return this.reviewsRepository.findAndCount({
+    const res = this.reviewsRepository.findAndCount({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       where: whereConditions,
-      skip,
+      skip: 0,
       take: limit,
       relations: ['article', 'reviewer', 'assignedBy'],
       order: { createdAt: 'DESC' },
     });
+
+    this.logger.log(res);
+
+    return res;
   }
 
   async findById(id: string): Promise<Review> {

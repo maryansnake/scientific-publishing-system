@@ -50,7 +50,7 @@ export class UsersController {
     description: 'List of users',
     type: [User],
   })
-  async findAll(@Query() paginationDto: PaginationDto): Promise<User[]> {
+  async findAll(@Query() searchDto: { role: string }): Promise<User[]> {
     return this.usersService.findAll();
   }
 

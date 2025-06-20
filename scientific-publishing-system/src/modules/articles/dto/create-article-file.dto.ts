@@ -18,15 +18,19 @@ export class CreateArticleFileDto {
   filename: string;
 
   @ApiProperty({ description: 'URL where the file is stored' })
+  @IsOptional()
+
   @IsString()
-  @IsNotEmpty()
+ 
   fileUrl: string;
 
   @ApiProperty({ description: 'Size of file in bytes' })
+  @IsOptional()
   @IsInt()
   fileSize: number;
 
   @ApiProperty({ description: 'MIME type of the file' })
+  @IsOptional()
   @IsString()
   @MaxLength(100)
   mimeType: string;

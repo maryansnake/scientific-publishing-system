@@ -46,13 +46,19 @@ __decorate([
     __metadata("design:type", String)
 ], CreateReviewDto.prototype, "assignedById", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ description: 'Status of the review', enum: review_entity_1.ReviewStatus }),
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'Status of the review',
+        enum: review_entity_1.ReviewStatus,
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(review_entity_1.ReviewStatus),
     __metadata("design:type", String)
 ], CreateReviewDto.prototype, "status", void 0);
 __decorate([
-    (0, swagger_1.ApiPropertyOptional)({ description: 'Recommendation for the article', enum: review_entity_1.ReviewRecommendation }),
+    (0, swagger_1.ApiPropertyOptional)({
+        description: 'Recommendation for the article',
+        enum: review_entity_1.ReviewRecommendation,
+    }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(review_entity_1.ReviewRecommendation),
     __metadata("design:type", String)

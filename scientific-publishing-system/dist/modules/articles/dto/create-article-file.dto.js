@@ -33,17 +33,19 @@ __decorate([
 ], CreateArticleFileDto.prototype, "filename", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'URL where the file is stored' }),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateArticleFileDto.prototype, "fileUrl", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Size of file in bytes' }),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], CreateArticleFileDto.prototype, "fileSize", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'MIME type of the file' }),
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MaxLength)(100),
     __metadata("design:type", String)

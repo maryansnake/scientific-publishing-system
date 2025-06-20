@@ -25,12 +25,18 @@ export class CreateReviewDto {
   @IsUUID()
   assignedById: string;
 
-  @ApiPropertyOptional({ description: 'Status of the review', enum: ReviewStatus })
+  @ApiPropertyOptional({
+    description: 'Status of the review',
+    enum: ReviewStatus,
+  })
   @IsOptional()
   @IsEnum(ReviewStatus)
   status?: ReviewStatus;
 
-  @ApiPropertyOptional({ description: 'Recommendation for the article', enum: ReviewRecommendation })
+  @ApiPropertyOptional({
+    description: 'Recommendation for the article',
+    enum: ReviewRecommendation,
+  })
   @IsOptional()
   @IsEnum(ReviewRecommendation)
   recommendation?: ReviewRecommendation;

@@ -22,7 +22,6 @@ const user_entity_1 = require("./entities/user.entity");
 const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const roles_guard_1 = require("../auth/guards/roles.guard");
 const roles_decorator_1 = require("../auth/decorators/roles.decorator");
-const pagination_dto_1 = require("../../common/dto/pagination.dto");
 let UsersController = class UsersController {
     usersService;
     constructor(usersService) {
@@ -31,7 +30,7 @@ let UsersController = class UsersController {
     async create(createUserDto) {
         return this.usersService.create(createUserDto);
     }
-    async findAll(paginationDto) {
+    async findAll(searchDto) {
         return this.usersService.findAll();
     }
     findById(id) {
@@ -71,7 +70,7 @@ __decorate([
     }),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [pagination_dto_1.PaginationDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "findAll", null);
 __decorate([

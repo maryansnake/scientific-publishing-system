@@ -28,8 +28,7 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiPropertyOptional)({ description: 'Order of author in the list' }),
     (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], AuthorDTO.prototype, "order", void 0);
 __decorate([
     (0, swagger_1.ApiPropertyOptional)({ description: 'Is corresponding author' }),

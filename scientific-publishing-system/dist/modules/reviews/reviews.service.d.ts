@@ -16,6 +16,7 @@ export declare class ReviewsService {
     private reviewsRepository;
     private articlesService;
     private usersService;
+    private readonly logger;
     constructor(reviewsRepository: Repository<Review>, articlesService: ArticlesService, usersService: UsersService);
     create(createReviewDto: CreateReviewDto): Promise<Review>;
     findAll(filters?: {

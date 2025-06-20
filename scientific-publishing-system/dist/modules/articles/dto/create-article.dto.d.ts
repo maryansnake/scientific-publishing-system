@@ -1,7 +1,7 @@
 import { ArticleType, ArticleStatus } from '../entities/article.entity';
 export declare class AuthorDTO {
     userId: string;
-    order?: string;
+    order?: number;
     isCorresponding?: Boolean;
 }
 export declare class CreateArticleDto {

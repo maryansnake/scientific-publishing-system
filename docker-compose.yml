@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: "postgres:16.2"
+    container_name: "postgres"
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=mrsnakevs
+      - POSTGRES_PASSWORD=mrsnakevs
+      - POSTGRES_DB=scientific_publishing

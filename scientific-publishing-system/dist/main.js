@@ -6,7 +6,9 @@ const swagger_1 = require("@nestjs/swagger");
 const app_module_1 = require("./app.module");
 const config_1 = require("@nestjs/config");
 async function bootstrap() {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, {
+        logger: false,
+    });
     const configService = app.get(config_1.ConfigService);
     const apiPrefix = configService.get('API_PREFIX') || 'api';
     app.setGlobalPrefix(apiPrefix);

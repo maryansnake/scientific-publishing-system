@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var ReviewsService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewsService = void 0;
 const common_1 = require("@nestjs/common");
@@ -20,10 +21,11 @@ const review_entity_1 = require("./entities/review.entity");
 const articles_service_1 = require("../articles/articles.service");
 const users_service_1 = require("../users/users.service");
 const article_entity_1 = require("../articles/entities/article.entity");
-let ReviewsService = class ReviewsService {
+let ReviewsService = ReviewsService_1 = class ReviewsService {
     reviewsRepository;
     articlesService;
     usersService;
+    logger = new common_1.Logger(ReviewsService_1.name);
     constructor(reviewsRepository, articlesService, usersService) {
         this.reviewsRepository = reviewsRepository;
         this.articlesService = articlesService;
@@ -70,13 +72,15 @@ let ReviewsService = class ReviewsService {
         if (filters?.status) {
             whereConditions.status = filters.status;
         }
-        return this.reviewsRepository.findAndCount({
+        const res = this.reviewsRepository.findAndCount({
             where: whereConditions,
-            skip,
+            skip: 0,
             take: limit,
             relations: ['article', 'reviewer', 'assignedBy'],
             order: { createdAt: 'DESC' },
         });
+        this.logger.log(res);
+        return res;
     }
     async findById(id) {
         const review = await this.reviewsRepository.findOne({
@@ -172,7 +176,7 @@ let ReviewsService = class ReviewsService {
     }
 };
 exports.ReviewsService = ReviewsService;
-exports.ReviewsService = ReviewsService = __decorate([
+exports.ReviewsService = ReviewsService = ReviewsService_1 = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(review_entity_1.Review)),
     __metadata("design:paramtypes", [typeorm_2.Repository,

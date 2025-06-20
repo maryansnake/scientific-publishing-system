@@ -21,8 +21,8 @@ export class AuthorDTO {
 
   @ApiPropertyOptional({ description: 'Order of author in the list' })
   @IsOptional()
-  @IsString()
-  order?: string;
+  // @IsString()
+  order?: number;
 
   @ApiPropertyOptional({ description: 'Is corresponding author' })
   @IsOptional()
